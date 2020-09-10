@@ -23,6 +23,9 @@ var heading = document.getElementById('subhead');
 var desc = document.getElementById('description');
 var desc2 = document.getElementById('description2');
 
+var select = document.getElementById('selection');
+var seldesc = document.getElementById('selectiondesc');
+
 function introshow(){
 	heading.innerHTML = "Introduction"
 	desc.innerHTML = "A sentence can become more complex, if more than one verb is present or by joining two sentences or words using conjunctions or by some other methods."
@@ -38,6 +41,26 @@ function objectiveshow(){
 	desc.innerHTML = "<br><hr><br><br>The objective of this experiment is to know how to form logically correct sentences from the given words.<br>";
 	desc2.innerHTML = "<br><hr>";
 }
+
+function dropdownchange(){
+	var x = document.getElementById('lang').value;
+	if(x == 'select'){
+		seldesc.innerHTML = "";
+		desc.innerHTML = "";
+	}
+	if(x == 'english'){
+		seldesc.innerHTML = "<br><br><b>Form a sentence (Declarative or Interrogative or any other type) from the given words</b>";
+		desc.style.color = "blue";
+		desc.innerHTML = "<center><i>(select the buttons in proper order)</i></center>"
+	}
+	if(x == 'hindi'){
+		seldesc.innerHTML = "<br><br><b>Form a sentence (Declarative or Interrogative or any other type) from the given words</b>";
+		desc.style.color = "blue";
+		desc.innerHTML = "<center><i>(select the buttons in proper order)</i></center>"
+	}
+}
+
+
 function experimentshow(){
 	heading.innerHTML = "Experiment";
 	desc.innerHTML = "";
