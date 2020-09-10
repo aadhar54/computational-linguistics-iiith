@@ -29,7 +29,10 @@ var desc3 = document.getElementById('description3');
 var desc4 = document.getElementById('description4');
 var sentence = document.getElementById('sentence');
 var reform = document.getElementById('reformbtnpara');
-var j;
+var correctness = document.getElementById('correctnesspara')
+var j,btncount;
+var finalsentence ="";
+var clickcount = 0;
 
 function introshow(){
 	heading.innerHTML = "Introduction"
@@ -43,6 +46,7 @@ function introshow(){
 	desc4.style.textAlign = "left";
 	sentence.innerHTML = "";
 	reform.innerHTML = "";
+	correctness.innerHTML = "";
 }
 function theoryshow(){
 	heading.innerHTML = "Theory";
@@ -56,6 +60,7 @@ function theoryshow(){
 	sentence.innerHTML = "";
 	desc4.style.textAlign = "left";
 	reform.innerHTML = "";
+	correctness.innerHTML = "";
 }
 function objectiveshow(){
 	heading.innerHTML = "Objective";
@@ -69,6 +74,8 @@ function objectiveshow(){
 	desc4.style.textAlign = "left";
 	sentence.innerHTML = "";
 	reform.innerHTML = "";
+	correctness.innerHTML = "";
+
 }
 
 function insiderandomizer(jumbled){
@@ -91,9 +98,10 @@ function reformsentence(){
 	sentence.innerHTML = finalsentence;
 	reform.innerHTML = "";
 	desc4.innerHTML = "";
+	correctness.innerHTML = "";
 }
 
-var finalsentence ="";
+
 function formsentence(id,value){
 	desc4.style.textAlign = "center";
 	desc4.innerHTML = "<br><font color='darkblue'><b>Formed Sentence</b></font><font color='blue'> <i>(after selecting words):</i></font><br>";
@@ -102,12 +110,17 @@ function formsentence(id,value){
 	sentence.innerHTML = finalsentence;
 	document.getElementById(id).style.display = "none";
 	reform.innerHTML = "<center><button id='refornbtn' onclick='reformsentence()'>Re-form the sentence</button></center>"
-
+	clickcount++;
+	if(btncount==clickcount){
+		correctness.innerHTML = "<center><button id='correctnessbtn'>Check the correctness of this sentence</button></center>"
+	}
 }
 
 function dropdownchange(){
 	var x = document.getElementById('lang').value;
 	if(x == 'select'){
+		clickcount = 0;
+		btncount = 0;
 		seldesc.innerHTML = "";
 		desc3.innerHTML = "";
 		desc2.innerHTML = "";
@@ -115,10 +128,14 @@ function dropdownchange(){
 		desc4.style.textAlign = "left";
 		sentence.innerHTML = "";
 		reform.innerHTML = "";
+		correctness.innerHTML = "";
 
 	}
 	if(x == 'english'){
+		reform.innerHTML = "";
 		sentence.innerHTML = "";
+		correctness.innerHTML = "";
+		desc4.innerHTML = "";
 		finalsentence = "";
 		seldesc.innerHTML = "<br><br><b>Form a sentence (Declarative or Interrogative or any other type) from the given words</b>";
 		desc3.style.color = "blue";
@@ -129,15 +146,21 @@ function dropdownchange(){
 		desc2.style.textAlign = "center";
 		var b ="";
 		var bs = "";
+		clickcount = 0;
+		btncount = 0;
 		for(i=0;i<=j.length-1;i++){
 			val = j[i];
 			b = "  <button id='btn"+i+"'onclick='formsentence(this.id,this.value)' value='"+val+"'>"+val+"</button>  ";
 			bs +=b;
+			btncount++;
 		}
 		desc2.innerHTML = bs.trim();
 	}
 	if(x == 'hindi'){
+		reform.innerHTML = "";
 		sentence.innerHTML = "";
+		correctness.innerHTML = "";
+		desc4.innerHTML = "";
 		finalsentence = "";
 		seldesc.innerHTML = "<br><br><b>Form a sentence (Declarative or Interrogative or any other type) from the given words</b>";
 		desc3.style.color = "blue";
@@ -148,10 +171,13 @@ function dropdownchange(){
 		desc2.style.textAlign = "center";
 		var b ="";
 		var bs = "";
+		btncount = 0;
+		clickcount = 0;
 		for(i=0;i<=j.length-1;i++){
 			val = j[i];
 			b = "  <button id='btn"+i+"'onclick='formsentence(this.id,this.value)' value='"+val+"'>"+val+"</button>  ";
 			bs +=b;
+			btncount++;
 		}
 		desc2.innerHTML = bs.trim();
 	}
@@ -169,6 +195,7 @@ function experimentshow(){
 	desc4.style.textAlign = "left";
 	sentence.innerHTML = "";
 	reform.innerHTML = "";
+	correctness.innerHTML = "";
 }
 
 function quizzesshow(){
@@ -183,6 +210,7 @@ function quizzesshow(){
 	desc4.style.textAlign = "left";
 	sentence.innerHTML = "";
 	reform.innerHTML = "";
+	correctness.innerHTML = "";
 }
 function procedureshow(){
 	heading.innerHTML = "Procedure";
@@ -197,4 +225,5 @@ function procedureshow(){
 	sentence.innerHTML = "";
 	desc4.style.textAlign = "left";
 	reform.innerHTML = "";
+	correctness.innerHTML = "";
 } 
