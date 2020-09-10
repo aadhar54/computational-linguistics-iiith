@@ -1,0 +1,10 @@
+Missing Functionalities : 
+
+
+1. The reform sentence button at any moment returns how many ever words you have chosen back to the jumbled sentence along with hiding the message  Formed Sentence (after selecting words). If it is clicked after you have selected all words, it will again return the words back to the jumbled order. This button basically acts as a reset button.
+
+2. The Get Correct Sentence when clicked after displaying the right sentence becomes Hide the Correct Sentence wherein the correct sentence disappears. The Hide the correct sentence becomes get answers when clicked and so on. 
+
+3. Whenever the button “check the correctness of sentence” is pressed, the Get Correct sentence button is invoked. 
+
+4. The English and Hindi Sentences are randomly chosen from a list of sentences. Every time English or Hindi is chosen, a new random English/Hindi Sentence comes into play. 
