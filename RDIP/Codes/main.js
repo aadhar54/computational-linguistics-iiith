@@ -201,7 +201,7 @@ function insiderandomizer(jumbled) {
 }
 
 function getcorrecttoggle() {
-  if ((correctanswers.style.display = 'none')) {
+  if (correctanswers.style.display == 'none') {
     correctanswers.style.display = '';
     res.innerHTML =
       "<center><font color = 'red'>Wrong Answer!!!</font><br><button id='showansbtn' onclick='hidecorrect()'>Hide correct sentence</button></center>";
@@ -215,7 +215,7 @@ function hidecorrect() {
 }
 function getcorrect() {
   answers = '';
-  correctanswers.innerHTML = '';
+
   var totalanswers = 0;
   if (x == 'english') {
     totalanswers = eng[r].length - 1;
@@ -261,6 +261,8 @@ function reformsentence() {
   correctness.innerHTML = '';
   clickcount = 0;
   res.innerHTML = '';
+  answers = '';
+  correctanswers.innerHTML = '';
 }
 
 function formsentence(id, value) {
