@@ -5,13 +5,16 @@ var corpus = [
   'A man had a little dog, and he was very fond of it. He would pat its head, and take it on his knee, and talk to it. Then he would give it little bits of food from his own plate. A donkey looked in at the window and saw the man and the dog. "Why does he not make a pet of me?" said the donkey. "It is not fair. I work hard, and the dog only wags its tail, and barks, and jumps on its master\'s knee. It is not fair." Then the donkey said to himself, "If I do what the dog does, he may make a pet of me." So the donkey ran into the room. It brayed as loudly as it could. It wagged its tail so hard that it knocked over a jar on the table. Then it tried to jump on to its master\'s knee. The master thought the donkey was mad, and he shouted, "Help! Help!" Men came running in with sticks, and they beat the donkey till it ran out of the house, and they drove it back to the field. "I only did what the dog does," said the donkey," and yet they make a pet of the dog, and they beat me with sticks. It is not fair.',
 ];
 //corpus[0] = 169,80,78 ------ corpus[1] = 111,65,64 ------- corpu[2] = 219,95,91//
-
+//corpus[0] = 169,80,73 ------ corpus[1] = 111,65,56 ------- corpu[2] = 219,95,84//
 //------------------- CORPUS ------------------------//
 
 //-------------------Snowball-----------------------//
 
 //var Snowball = require(['Snowball']);
 var stemmer = new Snowball('English');
+stemmer.setCurrent('abbreviations');
+stemmer.stem();
+console.log(stemmer.getCurrent());
 
 //-------------------Snowball-----------------------//
 
@@ -57,6 +60,11 @@ function objectiveshow() {
 }
 
 function comparenewtype(l) {
+  var f = isNaN(newtypecount);
+  if (f) {
+    alert('Please enter a valid number as input');
+    return;
+  }
   if (l == newtypecount) {
     document.getElementById('newtypeinput').style.backgroundColor = 'Green';
     nanswer.innerHTML =
@@ -79,10 +87,29 @@ function stemming() {
   stemstring = stemstring.toLowerCase();
   var stemstring1 = stemstring.split(' ');
   var str = [];
+  var j = 0;
   for (i = 0; i < stemstring1.length; i++) {
-    stemmer.setCurrent(stemstring1[i]);
-    stemmer.stem();
-    str[i] = stemmer.getCurrent();
+    if (
+      stemstring1[i] == 'the' ||
+      stemstring1[i] == 'of' ||
+      stemstring1[i] == 'to' ||
+      stemstring1[i] == 'very' ||
+      stemstring1[i] == 'does' ||
+      stemstring1[i] == 'off' ||
+      stemstring1[i] == 'me' ||
+      stemstring1[i] == 'you' ||
+      stemstring1[i] == 'up' ||
+      stemstring1[i] == 'can' ||
+      stemstring1[i] == 'than' ||
+      stemstring1[i] == 'did'
+    ) {
+      continue;
+    } else {
+      stemmer.setCurrent(stemstring1[i]);
+      stemmer.stem();
+      str[j] = stemmer.getCurrent();
+      j++;
+    }
   }
   str = new Set(str);
   str = Array.from(str);
@@ -99,6 +126,12 @@ function continuebtn() {
 function verify() {
   var tokens = document.getElementById('tokeninput').value;
   var types = document.getElementById('typeinput').value;
+  var f1 = isNaN(tokens);
+  var f2 = isNaN(types);
+  if (f1 || f2) {
+    alert('Please enter a valid number in both the input');
+    return;
+  }
   if (wordcount == tokens) {
     document.getElementById('tokeninput').style.backgroundColor = 'Green';
   } else {
