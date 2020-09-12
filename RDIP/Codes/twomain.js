@@ -8,6 +8,16 @@ var corpus = [
 
 //------------------- CORPUS ------------------------//
 
+//-------------------Snowball-----------------------//
+
+//var Snowball = require(['Snowball']);
+var stemmer = new Snowball('English');
+stemmer.setCurrent('abbreviations');
+stemmer.stem();
+console.log(stemmer.getCurrent());
+
+//-------------------Snowball-----------------------//
+
 var subheading = document.getElementById('subheading');
 var description = document.getElementById('description');
 var corpuscontent = document.getElementById('corpuscontent');
