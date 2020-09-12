@@ -12,6 +12,7 @@ var subheading = document.getElementById('subheading');
 var description = document.getElementById('description');
 var corpuscontent = document.getElementById('corpuscontent');
 var answer = document.getElementById('answer');
+var submit = document.getElementById('submit');
 var x, wordcount, uniquewordcount;
 
 function clearfields() {
@@ -19,6 +20,7 @@ function clearfields() {
   description.innerHTML = '';
   corpuscontent.innerHTML = '';
   answer.innerHTML = '';
+  submit.innerHTML = '';
 }
 
 function introshow() {
@@ -45,6 +47,13 @@ function objectiveshow() {
     '<br><hr><br>The objective of this experiment is to impart basic knowledge about the distinction between types and tokens.<br><br><hr>';
 }
 
+function continuebtn() {
+  submit.innerHTML =
+    "<br><center>Now, consider all the tokens with the same 'root' word to be of the same type. Recalculate the number of types.<br><br>#new types:<br><input type='text' id='newtypeinput'></center>";
+  answer.innerHTML =
+    "<center><button id='submit1' value='Submit'>Submit</button></center>";
+}
+
 function verify() {
   var tokens = document.getElementById('tokeninput').value;
   var types = document.getElementById('typeinput').value;
@@ -61,7 +70,7 @@ function verify() {
   }
   if (wordcount == tokens && uniquewordcount == types) {
     answer.innerHTML =
-      "<center><font color='Green' style = 'font-size:20px'>Right answer</font><br><br><button id='continue'>Continue</button></center>";
+      "<center><font color='Green' style = 'font-size:20px'>Right answer</font><br><br><button id='continue' onclick='continuebtn()'>Continue</button></center>";
   } else {
     answer.innerHTML =
       "<center><font color='Red' style = 'font-size:20px'>Wrong answer</font></center>";
@@ -77,7 +86,9 @@ function dropdownchange() {
   if (x == 'corpus1') {
     corpuscontent.innerHTML =
       corpus[0] +
-      '<br><br><center>Enter the number of tokens and types for the above corpus:<table cellspacing = "-2" style="text-align:center;"><tr><td>#tokens: </td><td><input type="text" id="tokeninput" size="5"></td></tr><tr><td>#types: </td><td><input type="text" id="typeinput" size="5"></td></tr></table><br><button id="submit" value="Submit" onclick="verify()">Submit</button></center>';
+      '<br><br><center>Enter the number of tokens and types for the above corpus:<table cellspacing = "-2" style="text-align:center;"><tr><td>#tokens: </td><td><input type="text" id="tokeninput" size="5"></td></tr><tr><td>#types: </td><td><input type="text" id="typeinput" size="5"></td></tr></table><br></center>';
+    submit.innerHTML =
+      '<center><button id="submit" value="Submit" onclick="verify()">Submit</button></center>';
     var pattern = /\w+/gi;
     var str = corpus[0].match(pattern);
     wordcount = str.length; //*******************//
@@ -91,7 +102,9 @@ function dropdownchange() {
   if (x == 'corpus2') {
     corpuscontent.innerHTML =
       corpus[1] +
-      '<br><br><center>Enter the number of tokens and types for the above corpus:<table cellspacing = "-2" style="text-align:center;"><tr><td>#tokens: </td><td><input type="text" id="tokeninput" size="5"></td></tr><tr><td>#types: </td><td><input type="text" id="typeinput" size="5"></td></tr></table><br><button id="submit" value="Submit" onclick="verify()">Submit</button></center>';
+      '<br><br><center>Enter the number of tokens and types for the above corpus:<table cellspacing = "-2" style="text-align:center;"><tr><td>#tokens: </td><td><input type="text" id="tokeninput" size="5"></td></tr><tr><td>#types: </td><td><input type="text" id="typeinput" size="5"></td></tr></table><br></center>';
+    submit.innerHTML =
+      '<center><button id="submit" value="Submit" onclick="verify()">Submit</button></center>';
     var pattern = /\w+/gi;
     var str = corpus[1].match(pattern);
     wordcount = str.length; //*******************//
@@ -105,7 +118,9 @@ function dropdownchange() {
   if (x == 'corpus3') {
     corpuscontent.innerHTML =
       corpus[2] +
-      '<br><br><center>Enter the number of tokens and types for the above corpus:<table cellspacing = "-2" style="text-align:center;"><tr><td>#tokens: </td><td><input type="text" id="tokeninput" size="5"></td></tr><tr><td>#types: </td><td><input type="text" id="typeinput" size="5"></td></tr></table><br><button id="submit" value="Submit" onclick="verify()">Submit</button></center>';
+      '<br><br><center>Enter the number of tokens and types for the above corpus:<table cellspacing = "-2" style="text-align:center;"><tr><td>#tokens: </td><td><input type="text" id="tokeninput" size="5"></td></tr><tr><td>#types: </td><td><input type="text" id="typeinput" size="5"></td></tr></table><br></center>';
+    submit.innerHTML =
+      '<center><button id="submit" value="Submit" onclick="verify()">Submit</button></center>';
     var pattern = /\w+/gi;
     var str = corpus[2].match(pattern);
     wordcount = str.length; //*******************//
