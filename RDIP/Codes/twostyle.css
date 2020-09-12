@@ -105,10 +105,6 @@ body {
   font-family: 'Lucida Sans Unicode';
 }
 
-.innermiddle .content #selectiondesc {
-  text-align: center;
-  color: darkblue;
-}
 .innermiddle .content p {
   color: #383838;
   font-size: 16px;
@@ -128,4 +124,8 @@ body {
 ::selection {
   color: white;
   background: #fa619c;
+}
+
+.innermiddle .content #corpus {
+  font-size: 16px;
 }
