@@ -114,7 +114,6 @@ var hin = [
 var heading = document.getElementById('subhead');
 var desc = document.getElementById('description');
 var desc2 = document.getElementById('description2');
-
 var select = document.getElementById('selection');
 var seldesc = document.getElementById('selectiondesc');
 var desc3 = document.getElementById('description3');
@@ -123,10 +122,12 @@ var sentence = document.getElementById('sentence');
 var reform = document.getElementById('reformbtnpara');
 var correctness = document.getElementById('correctnesspara');
 var res = document.getElementById('result');
+var correctanswers = document.getElementById('correctansp');
 var j, btncount, r;
 var finalsentence = '';
 var clickcount = 0;
 var x;
+var answers = '';
 
 function introshow() {
   heading.innerHTML = 'Introduction';
@@ -199,15 +200,11 @@ function insiderandomizer(jumbled) {
   }
   return jumble;
 }
-
 function getcorrecttoggle() {
-  if (correctanswers.style.display == 'none') {
-    correctanswers.style.display = '';
-    res.innerHTML =
-      "<center><font color = 'red'>Wrong Answer!!!</font><br><button id='showansbtn' onclick='hidecorrect()'>Hide correct sentence</button></center>";
-  }
+  correctanswers.style.display = '';
+  res.innerHTML =
+    "<center><font color = 'red'>Wrong Answer!!!</font><br><button id='showansbtn' onclick='hidecorrect()'>Hide correct sentence</button></center>";
 }
-
 function hidecorrect() {
   res.innerHTML =
     "<center><font color = 'red'>Wrong Answer!!!</font><br><button id='showansbtn' onclick='getcorrecttoggle()'>Get answers</button></center>";
@@ -215,8 +212,8 @@ function hidecorrect() {
 }
 function getcorrect() {
   answers = '';
-
   var totalanswers = 0;
+  correctanswers.innerHTML = '';
   if (x == 'english') {
     totalanswers = eng[r].length - 1;
     res.innerHTML =
@@ -224,6 +221,7 @@ function getcorrect() {
     for (i = 0; i <= totalanswers; i++) {
       answers += '<center>' + eng[r][i] + '<br></center>';
     }
+    correctanswers.style.display = '';
     correctanswers.innerHTML = answers;
   } else if (x == 'hindi') {
     totalanswers = hin[r].length - 1;
@@ -232,13 +230,15 @@ function getcorrect() {
     for (i = 0; i <= totalanswers; i++) {
       answers += '<center>' + hin[r][i] + '<br></center>';
     }
+    correctanswers.style.display = '';
     correctanswers.innerHTML = answers;
   }
 }
-
 function correctioncheck() {
   var fs = finalsentence.trim();
   var result;
+  correctanswers.innerHTML = '';
+  //answers="";
   if (x == 'english') result = eng[r].includes(fs);
   else if (x == 'hindi') result = hin[r].includes(fs);
 
@@ -249,7 +249,6 @@ function correctioncheck() {
     res.innerHTML =
       "<center><font color = 'red'>Wrong Answer!!!</font><br><button id='showansbtn' onclick='getcorrect()'>Get correct sentence</button></center>";
 }
-
 function reformsentence() {
   for (i = 0; i <= j.length - 1; i++) {
     document.getElementById('btn' + i).style.display = '';
@@ -281,8 +280,8 @@ function formsentence(id, value) {
       "<center><button id='correctnessbtn' onclick='correctioncheck()'>Check the correctness of this sentence</button></center>";
   }
 }
-
 function dropdownchange() {
+  x = '';
   x = document.getElementById('lang').value;
   if (x == 'select') {
     answers = '';
@@ -374,7 +373,6 @@ function dropdownchange() {
     desc2.innerHTML = bs.trim();
   }
 }
-
 function experimentshow() {
   heading.innerHTML = 'Experiment';
   select.innerHTML =
